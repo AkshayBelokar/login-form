@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup,FormControl,FormControlName,Validators } from '@angular/forms'
+
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class LoginFormComponent implements OnInit {
+export class AppComponent {
+  title = 'checkout';
+  LoginForm = new FormGroup({
+    username : new FormControl('',[Validators.required,]),
+    password : new FormControl('',[Validators.requiredTrue],Validators.pattern(''))
+  })
 
-  constructor() { }
+  constructor(){}
 
-  ngOnInit(): void {
+  getUserFormData(data: any)
+  {
+
+  }
+
+  get username_valid()
+  {
+    return this.LoginForm.get('username');
+  }
+s
+  get password_valid()
+  {
+    return this.LoginForm.get('password');
   }
 
 }
+
